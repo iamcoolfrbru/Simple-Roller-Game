@@ -11,7 +11,8 @@
 
 var Game = {
   mode: "playing",   // "playing", "dead", or "won"
-  levelNumber: 0
+  levelNumber: 0,
+  jumpWasDown: false
 };
 
 Game.startLevel = function (levelNumber) {
@@ -35,6 +36,17 @@ Game.update = function () {
     return;
   }
 
+  var jumpJustPressed = Input.jump && !Game.jumpWasDown;  
+  Game.jumpWasDown = Input.jump;  
+  if (Game.mode === "won" && jumpJustPressed) {  
+    var nextLevel = Game.levelNumber + 1;  
+    if (nextLevel < Level.levels.length) {  
+      Game.startLevel(nextLevel);  
+    } else {  
+      Game.showMessage("You beat every level! Press R to restart.");  
+    }  
+  } 
+
   // If we are not playing, nothing moves. We just wait for R.
   if (Game.mode !== "playing") { return; }
 
@@ -48,7 +60,7 @@ Game.update = function () {
 
   if (Player.hasWon()) {
     Game.mode = "won";
-    Game.showMessage("You made it. Press R to play again.");
+    Game.showMessage("Level complete! Press space to continue.");
     return;
   }
 };
