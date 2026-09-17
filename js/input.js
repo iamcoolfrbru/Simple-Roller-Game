@@ -34,4 +34,5 @@ function setKey(key, isDown) {
   if (key === "ArrowRight" || key === "d" || key === "D") { Input.right = isDown; }
   if (key === "ArrowUp"    || key === " " || key === "w" || key === "W") { Input.jump = isDown; }
   if (key === "r" || key === "R") { Input.restart = isDown; }
+  if (key === "Shift") { Input.shift = isDown; }  
 }

@@ -31,10 +31,15 @@ Game.showMessage = function (text) {
 Game.update = function () {
 
   // R always restarts, no matter what mode we are in.
-  if (Input.restart) {
-    Game.startLevel(Game.levelNumber);
-    return;
-  }
+    if (Input.restart) {  
+    if (Input.shift) {  
+      Game.startLevel(0);  
+    } else {  
+      Game.startLevel(Game.levelNumber);  
+    }  
+    return;  
+  }  
+
 
   var jumpJustPressed = Input.jump && !Game.jumpWasDown;  
   Game.jumpWasDown = Input.jump;  
