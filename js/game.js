@@ -13,6 +13,7 @@ var Game = {
   mode: "playing",   // "playing", "dead", or "won"
   levelNumber: 0,
   jumpWasDown: false
+  bgHue: CONFIG.BG_START_HUE  
 };
 
 Game.startLevel = function (levelNumber) {
@@ -40,6 +41,12 @@ Game.update = function () {
     return;  
   }  
 
+    // --- shift the background color on every fresh jump ----------------  
+  var jumpJustPressed = Input.jump && !Game.jumpWasDown;  
+  Game.jumpWasDown = Input.jump;  
+  if (jumpJustPressed && Player.onGround) {  
+    Game.bgHue = (Game.bgHue + CONFIG.BG_HUE_STEP) % 360;  
+  }  
 
   var jumpJustPressed = Input.jump && !Game.jumpWasDown;  
   Game.jumpWasDown = Input.jump;  
