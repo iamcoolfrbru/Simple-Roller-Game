@@ -44,8 +44,9 @@ Game.update = function () {
     // --- shift the background color on every fresh jump ----------------  
   var jumpJustPressed = Input.jump && !Game.jumpWasDown;  
   Game.jumpWasDown = Input.jump;  
+    // --- pick a fresh random neon color on every ground jump -----------  
   if (jumpJustPressed && Player.onGround) {  
-    Game.bgHue = (Game.bgHue + CONFIG.BG_HUE_STEP) % 360;  
+    Game.bgHue = Math.floor(Math.random() * 360);  
   }  
 
   var jumpJustPressed = Input.jump && !Game.jumpWasDown;  

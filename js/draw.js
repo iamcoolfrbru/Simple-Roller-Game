@@ -36,7 +36,7 @@ Draw.everything = function () {
 
   // 1. wipe the screen white
     // background color from the current hue  
-  ctx.fillStyle = "hsl(" + Game.bgHue + ", 60%, 85%)";  
+  ctx.fillStyle = "hsl(" + Game.bgHue + ", 100%, 60%)";   
   ctx.fillRect(0, 0, CONFIG.CANVAS_W, CONFIG.CANVAS_H);
 
   // 2. shift everything left so the camera looks like it moved right
