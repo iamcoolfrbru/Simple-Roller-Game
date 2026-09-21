@@ -33,9 +33,8 @@ Level.loadData = function (whenDone) {
       whenDone();
     })
     .catch(function (error) {
-      document.getElementById("message").textContent =
-        "Could not load the level files. Check data/pieces.json and data/levels.json.";
-      console.error(error);
+      document.getElementById("message").textContent =  
+        "Load error: " + error.message; 
     });
 };
 
