@@ -33,7 +33,7 @@ var CONFIG = {
                       // 0 = dead center, 1 = right on the edge
 
   // --- rules ----------------------------------------------------------
-  START_LEVEL: 0      // which level in data/levels.json to load first
+  START_LEVEL: 0,      // which level in data/levels.json to load first
 
   BG_START_HUE: 210,        // starting background color, 0-360 (210 = blue)  
   BG_HUE_STEP: 40,          // how much the color shifts with each jump  
