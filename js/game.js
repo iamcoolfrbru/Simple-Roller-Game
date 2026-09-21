@@ -41,16 +41,15 @@ Game.update = function () {
     return;  
   }  
 
-    // --- shift the background color on every fresh jump ----------------  
+  
   var jumpJustPressed = Input.jump && !Game.jumpWasDown;  
   Game.jumpWasDown = Input.jump;  
-    // --- pick a fresh random neon color on every ground jump -----------  
+  
+  // --- pick a fresh random neon color on every ground jump -----------  
   if (jumpJustPressed && Player.onGround) {  
     Game.bgHue = Math.floor(Math.random() * 360);  
   }  
-
-  var jumpJustPressed = Input.jump && !Game.jumpWasDown;  
-  Game.jumpWasDown = Input.jump;  
+  
   if (Game.mode === "won" && jumpJustPressed) {  
     var nextLevel = Game.levelNumber + 1;  
     if (nextLevel < Level.levels.length) {  
@@ -58,7 +57,8 @@ Game.update = function () {
     } else {  
       Game.showMessage("You beat every level! Press R to restart.");  
     }  
-  } 
+  }  
+
 
   // If we are not playing, nothing moves. We just wait for R.
   if (Game.mode !== "playing") { return; }
