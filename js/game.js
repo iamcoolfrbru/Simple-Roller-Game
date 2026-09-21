@@ -12,7 +12,7 @@
 var Game = {
   mode: "playing",   // "playing", "dead", or "won"
   levelNumber: 0,
-  jumpWasDown: false
+  jumpWasDown: false,
   bgHue: CONFIG.BG_START_HUE  
 };
 
