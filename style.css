@@ -33,3 +33,14 @@ canvas {
 .controls {
   font-size: 13px;
 }
+
+#invertBtn {  
+  margin-top: 10px;  
+  padding: 6px 14px;  
+  font-size: 16px;  
+  cursor: pointer;  
+}  
+  
+#game.inverted {  
+  filter: invert(1);  
+}  

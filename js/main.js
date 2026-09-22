@@ -14,3 +14,9 @@ Level.loadData(function () {
   Game.startLevel(CONFIG.START_LEVEL);
   Game.loop();
 });
+
+// --- color inversion toggle -------------------------------------------  
+var invertBtn = document.getElementById("invertBtn");  
+invertBtn.addEventListener("click", function () {  
+  Draw.canvas.classList.toggle("inverted");  
+});  
