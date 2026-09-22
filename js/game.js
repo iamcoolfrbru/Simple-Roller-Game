@@ -71,8 +71,6 @@ Game.update = function () {
   
   Player.update();  
 
-  Player.update();
-  
   if (Player.isDead()) {
     Game.mode = "dead";
     Game.showMessage("You hit something. Press R to try again.");
