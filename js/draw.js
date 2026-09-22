@@ -47,6 +47,7 @@ Draw.everything = function () {
   Draw.player();
 
   ctx.restore();
+  Trail.draw();  
 };
 
 // Draw every grid square that is currently on screen.

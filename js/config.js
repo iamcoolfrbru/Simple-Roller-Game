@@ -36,6 +36,7 @@ var CONFIG = {
   START_LEVEL: 0,      // which level in data/levels.json to load first
 
   BG_START_HUE: 210,        // starting background color, 0-360 (210 = blue)  
-  BG_HUE_STEP: 40,          // how much the color shifts with each jump  
-
+  BG_HUE_STEP: 40,          // how much the color shifts with each jump
+    
+  TRAIL_LIFE: 30   // how many frames a trail dot lasts (60 = one second)
 };

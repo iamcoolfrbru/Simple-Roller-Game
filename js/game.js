@@ -13,7 +13,8 @@ var Game = {
   mode: "playing",   // "playing", "dead", or "won"
   levelNumber: 0,
   jumpWasDown: false,
-  bgHue: CONFIG.BG_START_HUE  
+  bgHue: CONFIG.BG_START_HUE,
+  frameCount: 0
 };
 
 Game.startLevel = function (levelNumber) {
@@ -30,6 +31,8 @@ Game.showMessage = function (text) {
 
 // --- ONE FRAME --------------------------------------------------------
 Game.update = function () {
+
+  Game.frameCount = Game.frameCount + 1;  
 
   // R always restarts, no matter what mode we are in.
     if (Input.restart) {  
