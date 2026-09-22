@@ -64,11 +64,15 @@ Game.update = function () {
   }  
 
 
-  // If we are not playing, nothing moves. We just wait for R.
-  if (Game.mode !== "playing") { return; }
+    // If we are not playing, nothing moves. We just wait for R.  
+  if (Game.mode !== "playing") { return; }  
+  
+  Trail.update();  
+  
+  Player.update();  
 
   Player.update();
-
+  
   if (Player.isDead()) {
     Game.mode = "dead";
     Game.showMessage("You hit something. Press R to try again.");
