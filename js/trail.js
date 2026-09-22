@@ -39,7 +39,7 @@ Trail.draw = function () {
     // fade from bright to invisible as life runs out  
     var fade = dot.life / CONFIG.TRAIL_LIFE;  
     ctx.globalAlpha = fade * 0.6;  
-    ctx.fillStyle = "hsl(" + Game.bgHue + ", 100%, 60%)";  
+    ctx.fillStyle = "#000000" 
     ctx.beginPath();  
     ctx.arc(dot.x, dot.y, CONFIG.PLAYER_RADIUS * fade, 0, Math.PI * 2);  
     ctx.fill();  

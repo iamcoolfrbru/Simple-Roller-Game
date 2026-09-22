@@ -17,13 +17,14 @@ var Game = {
   frameCount: 0
 };
 
-Game.startLevel = function (levelNumber) {
-  Game.levelNumber = levelNumber;
-  Level.build(levelNumber);
-  Player.reset();
-  Game.mode = "playing";
-  Game.showMessage("");
-};
+Game.startLevel = function (levelNumber) {  
+  Game.levelNumber = levelNumber;  
+  Level.build(levelNumber);  
+  Trail.reset();  
+  Player.reset();  
+  Game.mode = "playing";  
+  Game.showMessage("");  
+};  
 
 Game.showMessage = function (text) {
   document.getElementById("message").textContent = text;
