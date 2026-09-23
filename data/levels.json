@@ -27,6 +27,10 @@
       "pieces": ["start", "spikepit", "gap", "spikepit", "platform", "spikes", "flat", "finish"] },  
   
     { "name": "Level 10 - Everything, Everywhere",  
-      "pieces": ["start", "spikes", "gap", "spikepit", "platform", "gap", "spikes", "step", "flat", "finish"] }  
+      "pieces": ["start", "spikes", "gap", "spikepit", "platform", "gap", "spikes", "step", "flat", "finish"] },  
+    
+      { "name": "Level 11 - The Tower",  
+      "pieces": ["start", "tower_base", "tower_mid", "tower_top", "tower_drop", "flat", "finish"] }  
+
   ]  
 }  
