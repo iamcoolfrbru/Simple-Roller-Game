@@ -2,32 +2,31 @@
   "_comment": "A level is just a list of piece names in order, left to right. Every name you use here must exist in data/pieces.json. Add, remove, or reorder pieces to build a new level. Every level should start with 'start' and end with 'finish'.",
 
   "levels": [
-    {
-      "name": "Level 1 - Warm Up",
-      "pieces": [
-        "start",
-        "flat",
-        "gap",
-        "flat",
-        "spikes",
-        "platform",
-        "stairs",
-        "finish"
-      ]
-    },
-    {
-      "name": "Level 2 - Watch Your Step",
-      "pieces": [
-        "start",
-        "spikes",
-        "gap",
-        "step",
-        "spikepit",
-        "platform",
-        "gap",
-        "flat",
-        "finish"
-      ]
-    }
-  ]
-}
+    { "name": "Level 2 - Two Gaps",  
+      "pieces": ["start", "flat", "gap", "flat", "gap", "flat", "finish"] },  
+  
+    { "name": "Level 3 - First Spikes",  
+      "pieces": ["start", "flat", "spikes", "gap", "flat", "spikes", "finish"] },  
+  
+    { "name": "Level 4 - Platforming",  
+      "pieces": ["start", "spikes", "gap", "platform", "spikes", "flat", "finish"] },  
+  
+    { "name": "Level 5 - The Pit",  
+      "pieces": ["start", "spikepit", "gap", "spikes", "flat", "spikepit", "finish"] },  
+  
+    { "name": "Level 6 - Climb and Dive",  
+      "pieces": ["start", "step", "gap", "platform", "spikepit", "flat", "finish"] },  
+  
+    { "name": "Level 7 - Spike Alley",  
+      "pieces": ["start", "spikes", "gap", "spikes", "gap", "spikepit", "flat", "finish"] },  
+  
+    { "name": "Level 8 - No Rest",  
+      "pieces": ["start", "step", "platform", "spikepit", "gap", "spikes", "flat", "finish"] },  
+  
+    { "name": "Level 9 - The Gauntlet",  
+      "pieces": ["start", "spikepit", "gap", "spikepit", "platform", "spikes", "flat", "finish"] },  
+  
+    { "name": "Level 10 - Everything, Everywhere",  
+      "pieces": ["start", "spikes", "gap", "spikepit", "platform", "gap", "spikes", "step", "flat", "finish"] }  
+  ]  
+}  
