@@ -44,10 +44,10 @@ Draw.everything = function () {
   ctx.translate(-Draw.cameraX, 0);
 
   Draw.world();
+  Trail.draw();
   Draw.player();
 
   ctx.restore();
-  Trail.draw();  
 };
 
 // Draw every grid square that is currently on screen.

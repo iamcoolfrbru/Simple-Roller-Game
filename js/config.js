@@ -38,5 +38,5 @@ var CONFIG = {
   BG_START_HUE: 210,        // starting background color, 0-360 (210 = blue)  
   BG_HUE_STEP: 40,          // how much the color shifts with each jump
     
-  TRAIL_LIFE: 30   // how many frames a trail dot lasts (60 = one second)
+  TRAIL_LIFE: 60   // how many frames a trail dot lasts (60 = one second)
 };
