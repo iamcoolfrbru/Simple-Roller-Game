@@ -48,6 +48,10 @@ Draw.everything = function () {
   Draw.player();
 
   ctx.restore();
+  ctx.fillText(Level.name, 10, 25);  
+  // level number, fixed on screen under the name  
+  ctx.font = "16px sans-serif";  
+  ctx.fillText("Level " + (Game.levelNumber + 1) + " of " + Level.levels.length, 10, 48);  
 };
 
 // Draw every grid square that is currently on screen.
