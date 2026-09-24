@@ -15,7 +15,7 @@ Trail.reset = function () {
   
 Trail.update = function () {  
   // drop a dot every 4 frames while playing  
-  if (Game.mode === "playing" && Game.frameCount % 4 === 0) {  
+  if (Game.mode === "playing" && Game.frameCount % 1 === 0) {  
     Trail.dots.push({  
       x: Player.x + CONFIG.PLAYER_SIZE / 2,  
       y: Player.y + CONFIG.PLAYER_SIZE / 2,  
