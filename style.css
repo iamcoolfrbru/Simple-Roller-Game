@@ -74,3 +74,11 @@ p {
  100% { color: red; } 
 } 
 
+html {
+  background-color: #000000;
+}
+
+body {
+  background-color: #000000;
+  color: #000000;
+}
