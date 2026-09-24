@@ -47,9 +47,13 @@ Draw.everything = function () {
   Trail.draw();
   Draw.player();
 
-  ctx.restore();
+    ctx.restore();  
+  
+  // HUD, fixed on screen  
+  ctx.fillStyle = "#000000";  
+  ctx.font = "bold 20px sans-serif";  
   ctx.fillText(Level.name, 10, 25);  
-  // level number, fixed on screen under the name  
+  
   ctx.font = "16px sans-serif";  
   ctx.fillText("Level " + (Game.levelNumber + 1) + " of " + Level.levels.length, 10, 48);  
 };
