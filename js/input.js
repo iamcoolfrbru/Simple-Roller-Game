@@ -37,3 +37,28 @@ function setKey(key, isDown) {
   if (key === "r" || key === "R") { Input.restart = isDown; }
   if (key === "Shift") { Input.shift = isDown; }  
 }
+
+// --- gamepad support ---------------------------------------------------  
+// Reads the first connected controller every frame and maps its  
+// inputs onto the same Input flags the keyboard uses.  
+Input.pollGamepad = function () {  
+  var pads = navigator.getGamepads ? navigator.getGamepads() : [];  
+  var pad = null;  
+  
+  // find the first controller that is actually connected  
+  for (var i = 0; i < pads.length; i++) {  
+    if (pads[i] && pads[i].connected) { pad = pads[i]; break; }  
+  }  
+  if (!pad) { return; }  
+  
+  // left stick horizontal: dead zone of 0.3 so tiny drift doesn't move you  
+  var stickX = pad.axes[0];  
+  if (stickX < -0.3) { Input.left = true; } else { Input.left = false; }  
+  if (stickX > 0.3)  { Input.right = true; } else { Input.right = false; }  
+  
+  // jump: A (button 0) or X (button 2)  
+  Input.jump = pad.buttons[0].pressed || pad.buttons[2].pressed;  
+  
+  // restart: options/menu button (button 9)  
+  Input.restart = pad.buttons[9].pressed;  
+};  

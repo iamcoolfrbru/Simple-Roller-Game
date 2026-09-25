@@ -33,6 +33,8 @@ Game.showMessage = function (text) {
 // --- ONE FRAME --------------------------------------------------------
 Game.update = function () {
 
+  Input.pollGamepad();
+
   Game.frameCount = Game.frameCount + 1;  
 
   // R always restarts, no matter what mode we are in.
