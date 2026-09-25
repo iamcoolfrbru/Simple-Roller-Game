@@ -12,7 +12,7 @@
 var Draw = {
   canvas: null,
   ctx: null,
-  cameraX: 0     // how far the view has scrolled to the right
+  cameraX: 0,     // how far the view has scrolled to the right
   cameraY: 0
 };
 
