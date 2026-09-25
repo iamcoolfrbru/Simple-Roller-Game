@@ -21,8 +21,6 @@ Draw.setup = function () {
   Draw.ctx = Draw.canvas.getContext("2d");
 };
 
-// Follow the player horizontally AND vertically, but never scroll past  
-// the ends of the level.  
 Draw.updateCamera = function () {  
   Draw.cameraX = Player.x - CONFIG.CANVAS_W / 2;  
   if (Draw.cameraX < 0) { Draw.cameraX = 0; }  
@@ -31,14 +29,10 @@ Draw.updateCamera = function () {
   if (furthest < 0) { furthest = 0; }  
   if (Draw.cameraX > furthest) { Draw.cameraX = furthest; }  
   
-  // vertical follow: the world is only 10 rows (400px) tall, same as  
-  // the canvas, so there is usually nothing to scroll — but if pieces  
-  // ever extend above row 0 or below row 9, this keeps the ball in view  
-  var worldH = CONFIG.ROWS * CONFIG.TILE;  
+  // vertical follow — can scroll above the world since there's no ceiling  
   Draw.cameraY = Player.y - CONFIG.CANVAS_H / 2;  
-  if (Draw.cameraY < 0) { Draw.cameraY = 0; }  
-  var furthestY = worldH - CONFIG.CANVAS_H;  
-  if (Draw.cameraY > furthestY) { Draw.cameraY = furthestY; }  
+  var bottomLimit = CONFIG.ROWS * CONFIG.TILE - CONFIG.CANVAS_H;  
+  if (Draw.cameraY > bottomLimit) { Draw.cameraY = bottomLimit; }  
 };  
 
 // Draw one whole frame.
