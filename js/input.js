@@ -6,13 +6,18 @@
    and decides to move.
    ===================================================================== */
 
-var Input = {
-  left: false,
-  right: false,
-  jump: false,
-  restart: false,
-  shift: false
-};
+var Input = {  
+  keyLeft: false,  
+  keyRight: false,  
+  keyJump: false,  
+  keyRestart: false,  
+  shift: false,  
+  select: null,  
+  left: false,  
+  right: false,  
+  jump: false,  
+  restart: false  
+};  
 
 // Called whenever a key goes DOWN.
 window.addEventListener("keydown", function (event) {
@@ -28,37 +33,39 @@ window.addEventListener("keyup", function (event) {
   setKey(event.key, false);
 });
 
-// One place that decides which key means what.
-// WANT TO ADD A KEY? Add a line here.
-function setKey(key, isDown) {
-  if (key === "ArrowLeft"  || key === "a" || key === "A") { Input.left  = isDown; }
-  if (key === "ArrowRight" || key === "d" || key === "D") { Input.right = isDown; }
-  if (key === "ArrowUp"    || key === " " || key === "w" || key === "W") { Input.jump = isDown; }
-  if (key === "r" || key === "R") { Input.restart = isDown; }
+function setKey(key, isDown) {  
+  if (key === "ArrowLeft"  || key === "a" || key === "A") { Input.keyLeft  = isDown; }  
+  if (key === "ArrowRight" || key === "d" || key === "D") { Input.keyRight = isDown; }  
+  if (key === "ArrowUp"    || key === " " || key === "w" || key === "W") { Input.keyJump = isDown; }  
+  if (key === "r" || key === "R") { Input.keyRestart = isDown; }  
   if (key === "Shift") { Input.shift = isDown; }  
-}
+}  
 
-// --- gamepad support ---------------------------------------------------  
-// Reads the first connected controller every frame and maps its  
-// inputs onto the same Input flags the keyboard uses.  
 Input.pollGamepad = function () {  
+  // start from what the keyboard says  
+  var left   = Input.keyLeft;  
+  var right  = Input.keyRight;  
+  var jump   = Input.keyJump;  
+  var restart = Input.keyRestart;  
+  
   var pads = navigator.getGamepads ? navigator.getGamepads() : [];  
   var pad = null;  
-  
-  // find the first controller that is actually connected  
   for (var i = 0; i < pads.length; i++) {  
     if (pads[i] && pads[i].connected) { pad = pads[i]; break; }  
   }  
-  if (!pad) { return; }  
   
-  // left stick horizontal: dead zone of 0.3 so tiny drift doesn't move you  
-  var stickX = pad.axes[0];  
-  if (stickX < -0.3) { Input.left = true; } else { Input.left = false; }  
-  if (stickX > 0.3)  { Input.right = true; } else { Input.right = false; }  
+  // if a controller is connected, OR its inputs in  
+  if (pad) {  
+    var stickX = pad.axes[0];  
+    if (stickX < -0.3) { left = true; }  
+    if (stickX > 0.3)  { right = true; }  
+    jump = jump || pad.buttons[0].pressed || pad.buttons[2].pressed;  
+    restart = restart || pad.buttons[9].pressed;  
+  }  
   
-  // jump: A (button 0) or X (button 2)  
-  Input.jump = pad.buttons[0].pressed || pad.buttons[2].pressed;  
-  
-  // restart: options/menu button (button 9)  
-  Input.restart = pad.buttons[9].pressed;  
+  // the merged result is what the game reads  
+  Input.left = left;  
+  Input.right = right;  
+  Input.jump = jump;  
+  Input.restart = restart;  
 };  
