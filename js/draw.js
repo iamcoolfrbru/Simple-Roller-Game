@@ -13,6 +13,7 @@ var Draw = {
   canvas: null,
   ctx: null,
   cameraX: 0     // how far the view has scrolled to the right
+  cameraY: 0
 };
 
 Draw.setup = function () {
@@ -20,15 +21,25 @@ Draw.setup = function () {
   Draw.ctx = Draw.canvas.getContext("2d");
 };
 
-// Follow the player, but never scroll past the ends of the level.
-Draw.updateCamera = function () {
-  Draw.cameraX = Player.x - CONFIG.CANVAS_W / 2;
-  if (Draw.cameraX < 0) { Draw.cameraX = 0; }
-
-  var furthest = Level.pixelWidth() - CONFIG.CANVAS_W;
-  if (furthest < 0) { furthest = 0; }   // level narrower than the screen
-  if (Draw.cameraX > furthest) { Draw.cameraX = furthest; }
-};
+// Follow the player horizontally AND vertically, but never scroll past  
+// the ends of the level.  
+Draw.updateCamera = function () {  
+  Draw.cameraX = Player.x - CONFIG.CANVAS_W / 2;  
+  if (Draw.cameraX < 0) { Draw.cameraX = 0; }  
+  
+  var furthest = Level.pixelWidth() - CONFIG.CANVAS_W;  
+  if (furthest < 0) { furthest = 0; }  
+  if (Draw.cameraX > furthest) { Draw.cameraX = furthest; }  
+  
+  // vertical follow: the world is only 10 rows (400px) tall, same as  
+  // the canvas, so there is usually nothing to scroll — but if pieces  
+  // ever extend above row 0 or below row 9, this keeps the ball in view  
+  var worldH = CONFIG.ROWS * CONFIG.TILE;  
+  Draw.cameraY = Player.y - CONFIG.CANVAS_H / 2;  
+  if (Draw.cameraY < 0) { Draw.cameraY = 0; }  
+  var furthestY = worldH - CONFIG.CANVAS_H;  
+  if (Draw.cameraY > furthestY) { Draw.cameraY = furthestY; }  
+};  
 
 // Draw one whole frame.
 Draw.everything = function () {
@@ -39,15 +50,14 @@ Draw.everything = function () {
   ctx.fillStyle = "hsl(" + Game.bgHue + ", 100%, 60%)";   
   ctx.fillRect(0, 0, CONFIG.CANVAS_W, CONFIG.CANVAS_H);
 
-  // 2. shift everything left so the camera looks like it moved right
-  ctx.save();
-  ctx.translate(-Draw.cameraX, 0);
+  ctx.save();  
+  ctx.translate(-Draw.cameraX, -Draw.cameraY);  
 
   Draw.world();
   Trail.draw();
   Draw.player();
 
-    ctx.restore();  
+  ctx.restore();  
   
   // HUD, fixed on screen  
   ctx.fillStyle = "#000000";  
