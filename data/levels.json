@@ -30,7 +30,7 @@
       "pieces": ["start", "spikes", "gap", "spikepit", "platform", "gap", "spikes", "step", "flat", "finish"] },  
     
       { "name": "Level 10 - The Tower",  
-      "pieces": ["start", "tower_base", "tower_mid", "tower_top", "tower_drop", "flat", "finish"] }  
+      "pieces": ["start", "tower_base", "tower_mid", "tower_top", "tower_drop", "tower_finish"] }  
 
   ]  
 }  
