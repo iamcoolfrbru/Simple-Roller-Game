@@ -15,6 +15,15 @@ Level.loadData(function () {
   Game.loop();
 });
 
+// --- level select buttons ---------------------------------------------  
+var levelButtons = document.querySelectorAll(".levelBtn");  
+for (var i = 0; i < levelButtons.length; i++) {  
+  levelButtons[i].addEventListener("click", function (event) {  
+    var levelIndex = parseInt(event.target.getAttribute("data-level"), 10);  
+    Game.startLevel(levelIndex);  
+  });  
+}  
+
 // --- color inversion toggle -------------------------------------------  
 var invertBtn = document.getElementById("invertBtn");  
 invertBtn.addEventListener("click", function () {  
