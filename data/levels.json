@@ -29,8 +29,10 @@
     { "name": "Level 9 - Everything, Everywhere",  
       "pieces": ["start", "spikes", "gap", "spikepit", "platform", "gap", "spikes", "step", "flat", "finish"] },  
     
-      { "name": "Level 10 - The Tower",  
-      "pieces": ["start", "tower_base", "tower_mid", "tower_top", "tower_drop", "tower_finish"] }  
+    { "name": "Level 10 - The Tower",  
+      "pieces": ["start", "tower_base", "tower_mid", "tower_top", "tower_drop", "tower_finish"] },  
 
+    { "name": "Level 11 - The Final Challenge",
+     "pieces": ["start", "the_final_challenge_1", "the_final_challenge_2", "the_final_challenge_3", "tower_finish"]}
   ]  
 }  
