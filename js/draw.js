@@ -80,6 +80,7 @@ Draw.world = function () {
       if (here === "#") { Draw.block(x, y, size); }
       if (here === "^") { Draw.spike(x, y, size); }
       if (here === "F") { Draw.finish(x, y, size); }
+      if (here === "/") { Draw.ramp(x, y, size); }  
     }
   }
 };
@@ -96,6 +97,21 @@ Draw.block = function (x, y, size) {
                  size - CONFIG.LINE_WIDTH,
                  size - CONFIG.LINE_WIDTH);
 };
+
+// A ramp: a diagonal surface rising from bottom-left to top-right.  
+Draw.ramp = function (x, y, size) {  
+  var ctx = Draw.ctx;  
+  ctx.fillStyle = "#ffffff";  
+  ctx.beginPath();  
+  ctx.moveTo(x, y + size);  
+  ctx.lineTo(x + size, y);  
+  ctx.lineTo(x + size, y + size);  
+  ctx.closePath();  
+  ctx.fill();  
+  ctx.strokeStyle = "#000000";  
+  ctx.lineWidth = CONFIG.LINE_WIDTH;  
+  ctx.stroke();  
+};  
 
 // A spike: a solid black triangle pointing up.
 Draw.spike = function (x, y, size) {
