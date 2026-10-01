@@ -29,13 +29,10 @@
     { "name": "Level 9 - Total Mixup",  
       "pieces": ["start", "spikes", "gap", "spikepit", "platform", "gap", "spikes", "step", "flat", "finish"] },  
     
-    {"name": "Level 10 - Ramps and Boosters!",
-      "pieces": ["start", "spikes2", "gap2", "ramp", "spikes3", "tower_base", "finish"]},
-    
-    { "name": "Level 11 - The Tower",  
+    { "name": "Level 10 - The Tower",  
       "pieces": ["start", "tower_base", "tower_mid", "tower_top", "tower_drop", "tower_finish"] },  
 
-    { "name": "Level 12 - The Final Challenge",
+    { "name": "Level 11 - The Final Challenge",
      "pieces": ["start", "the_final_challenge_1", "the_final_challenge_2", "the_final_challenge_3", "the_final_challenge_finish"]}
   ]  
 }  
