@@ -16,8 +16,39 @@ var Input = {
   left: false,  
   right: false,  
   jump: false,  
-  restart: false  
-};  
+  restart: false,
+  cheatInput: "",  
+  cheatActive: false  
+  
+}; 
+
+// --- cheat console -----------------------------------------------------  
+window.addEventListener("keydown", function (event) {  
+  if (!Input.cheatActive) {  
+    if (event.key === "`") {  
+      Input.cheatActive = true;  
+      Input.cheatInput = "";  
+      event.preventDefault();  
+    }  
+    return;  
+  }  
+  
+  // console is open: digits build the number, Enter confirms,  
+  // ANY other key cancels — including Backspace and letters  
+  if (event.key === "Enter") {  
+    var num = parseInt(Input.cheatInput, 10);  
+    if (num >= 1 && num <= 12) {  
+      Input.select = num;  
+    }  
+    Input.cheatActive = false;  
+    Input.cheatInput = "";  
+  } else if (event.key >= "0" && event.key <= "9" && Input.cheatInput.length < 2) {  
+    Input.cheatInput = Input.cheatInput + event.key;  
+  } else {  
+    Input.cheatActive = false;  
+    Input.cheatInput = "";  
+  }  
+});  
 
 // Called whenever a key goes DOWN.
 window.addEventListener("keydown", function (event) {
