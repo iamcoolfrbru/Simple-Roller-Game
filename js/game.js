@@ -65,6 +65,14 @@ Game.update = function () {
     }  
   }  
 
+  // --- level select: number keys and cheat console --------------------  
+  if (Input.select !== null) {  
+    var picked = Input.select - 1;  // select holds the level number, 1-12  
+    if (picked >= 0 && picked < Level.levels.length) {  
+      Game.startLevel(picked);  
+    }  
+    Input.select = null;  // clear it so it only fires once  
+  }  
 
     // If we are not playing, nothing moves. We just wait for R.  
   if (Game.mode !== "playing") { return; }  
